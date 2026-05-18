@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Contoso Active · Operations Copilot Immersion · April 2026</title>
+<style>
+:root{--radius:12px;--shadow:0 2px 8px rgba(0,0,0,.12);--ca:#E25522}
+@media(prefers-color-scheme:dark){:root{--bg:#0b1020;--panel:#0e1633;--panel2:#0a1228;--ink:#e2e8f0;--muted:#94a3b8;--border:#1e2d4a;--sidebar-a:#0e1530;--sidebar-b:#0a0f24;--accent:#E25522;--accent2:#fb923c;--nav-hover:#172244;--badge-bg:#0a0f24;--code:#0d1535;--good:#22c55e;--warn:#f59e0b;--danger:#ef4444;--card-soft:#0e1c2c}}
+@media(prefers-color-scheme:light){:root{--bg:#f0f4f8;--panel:#ffffff;--panel2:#f7f9fc;--ink:#1a202c;--muted:#64748b;--border:#d1d9e6;--sidebar-a:#1F2937;--sidebar-b:#111827;--accent:#E25522;--accent2:#c2410c;--nav-hover:#fde4d4;--badge-bg:#fff3ec;--code:#1e2b55;--good:#16a34a;--warn:#d97706;--danger:#dc2626;--card-soft:#fff8f4}}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:15px/1.55 "Inter","Segoe UI",system-ui,sans-serif}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+code,pre{font-family:"JetBrains Mono","Consolas",monospace;font-size:13px}
+.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+aside{background:linear-gradient(180deg,var(--sidebar-a),var(--sidebar-b));border-right:1px solid var(--border);padding:24px 18px;position:sticky;top:0;height:100vh;overflow-y:auto;color:#e2e8f0}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.brand .logo{width:38px;height:38px;border-radius:9px;background:var(--ca);display:grid;place-items:center;font-weight:900;color:#fff;font-size:13px;letter-spacing:-.5px}
+.brand h1{font-size:15px;margin:0;letter-spacing:.2px;color:#fff}
+.tag{font-size:11px;color:#94a3b8;margin-bottom:18px}
+nav h3{font-size:10px;letter-spacing:1.2px;color:#94a3b8;text-transform:uppercase;margin:18px 0 8px}
+nav a{display:block;color:#e2e8f0;padding:8px 10px;border-radius:9px;font-size:14px;margin-bottom:2px;border:1px solid transparent}
+nav a:hover{background:rgba(255,255,255,.12);text-decoration:none;border-color:rgba(255,255,255,.2);color:#fff}
+main{padding:28px 40px 80px;max-width:1080px}
+.hero{background:radial-gradient(800px 320px at 0% 0%,rgba(226,85,34,.32),transparent 60%),radial-gradient(700px 280px at 100% 0%,rgba(251,146,60,.18),transparent 60%),var(--panel);border:1px solid var(--border);border-radius:18px;padding:30px;margin-bottom:24px}
+.hero .pill{display:inline-block;background:var(--badge-bg);border:1px solid var(--border);color:var(--accent);font-size:11px;letter-spacing:1.2px;padding:4px 10px;border-radius:999px;margin-bottom:12px;font-weight:700}
+.hero h2{font-size:32px;margin:0 0 8px;line-height:1.2}
+.hero p{color:var(--muted);margin:0;max-width:780px}
+.meta-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;color:var(--muted);font-size:13px}
+.meta-row span b{color:var(--ink)}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.card h3{margin:0 0 6px;font-size:18px}
+.card .lead{color:var(--muted);margin:0 0 14px}
+.card h4{margin:18px 0 6px;font-size:14px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;font-weight:700}
+ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
+.sechead{display:flex;align-items:center;gap:14px;margin:32px 0 12px}
+.sechead .num{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,var(--ca),#f59e0b);display:grid;place-items:center;font-weight:800;font-size:18px;color:#fff}
+.sechead h2{margin:0;font-size:22px}
+.sechead small{display:block;color:var(--muted);font-size:11px;letter-spacing:1.2px;text-transform:uppercase}
+
+.badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:1px;padding:3px 8px;border-radius:6px;text-transform:uppercase;vertical-align:middle;margin-left:6px}
+.badge.basic{background:#dbeafe;color:#1e40af}
+.badge.premium{background:#fff3ec;color:#c2410c;border:1px solid #fdba74}
+@media(prefers-color-scheme:dark){.badge.basic{background:#0e1c2c;color:#93c5fd}.badge.premium{background:#2b1a0e;color:#fdba74;border-color:#7c2d12}}
+
+.prompt{background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:12px 14px;margin:10px 0;position:relative}
+.prompt .ptitle{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.prompt p{margin:4px 0 0;color:var(--ink);font-size:14px;line-height:1.55}
+.prompt code{background:transparent;color:var(--ink)}
+.copy-btn{position:absolute;top:10px;right:10px;background:var(--badge-bg);border:1px solid var(--border);color:var(--accent);font-size:11px;font-weight:700;padding:4px 9px;border-radius:6px;cursor:pointer;letter-spacing:.5px}
+.copy-btn:hover{background:var(--ca);color:#fff;border-color:var(--ca)}
+.copy-btn.done{background:#16a34a;color:#fff;border-color:#16a34a}
+
+.callout{background:linear-gradient(135deg,rgba(226,85,34,.12),rgba(251,146,60,.06));border:1px solid var(--accent);border-radius:14px;padding:22px;margin:18px 0}
+.callout h3{margin-top:0;color:var(--accent)}
+.callout .prompt{background:var(--panel);border-left-color:var(--accent)}
+
+.files-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:12px}
+.file-card{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:14px;display:flex;gap:12px;align-items:center;transition:transform .15s}
+.file-card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.file-card .ic{width:42px;height:42px;border-radius:8px;background:var(--ca);color:#fff;display:grid;place-items:center;font-weight:800;font-size:11px;flex-shrink:0}
+.file-card .ic.xlsx{background:#16a34a}
+.file-card .ic.docx{background:#2563eb}
+.file-card .ic.pptx{background:#dc2626}
+.file-card .meta{flex:1;min-width:0}
+.file-card .nm{font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;display:block;overflow-wrap:anywhere}
+.file-card .ds{font-size:11px;color:var(--muted);margin-top:2px}
+
+.cast{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:12px}
+.persona{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:14px}
+.persona .avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--ca),#f59e0b);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px;margin-bottom:8px}
+.persona h5{margin:0 0 2px;font-size:14px}
+.persona .role{font-size:11px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.8px}
+.persona p{margin:6px 0 0;font-size:12px;color:var(--muted)}
+
+/* Password gate */
+#gate{position:fixed;inset:0;background:var(--bg);display:grid;place-items:center;z-index:9999}
+#gate .gatebox{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:36px 32px;max-width:380px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+#gate h1{font-size:22px;margin:0 0 6px;color:var(--ink)}
+#gate .sub{color:var(--muted);font-size:13px;margin:0 0 22px}
+#gate .ca-logo{width:60px;height:60px;border-radius:14px;background:var(--ca);color:#fff;display:grid;place-items:center;font-weight:900;font-size:18px;margin:0 auto 16px;letter-spacing:-1px}
+#gate input{width:100%;padding:12px 14px;border:1px solid var(--border);background:var(--panel2);color:var(--ink);border-radius:9px;font:14px Inter,system-ui;margin-bottom:10px}
+#gate input:focus{outline:none;border-color:var(--accent)}
+#gate button{background:var(--accent);color:#fff;border:0;padding:11px 24px;border-radius:9px;font-weight:700;cursor:pointer;font-size:14px;width:100%}
+#gate button:hover{background:var(--accent2)}
+#gate .err{color:var(--danger);font-size:12px;margin-top:8px;min-height:16px}
+#gate .foot{margin-top:18px;font-size:10px;color:var(--muted);letter-spacing:.5px}
+
+@media(max-width:880px){
+  .layout{grid-template-columns:1fr}
+  aside{position:static;height:auto}
+  main{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="gatebox">
+    <div class="ca-logo">CA</div>
+    <h1>Contoso Active</h1>
+    <p class="sub">April 2026 · Operations Copilot Immersion<br/>Enter the session password to continue.</p>
+    <input id="pw" type="password" placeholder="Password" autofocus />
+    <button onclick="checkPw()">Enter</button>
+    <div class="err" id="err"></div>
+    <p class="foot">Confidential · Contoso Active · Internal use only</p>
+  </div>
+</div>
+
+<div class="layout" id="content" style="display:none">
+  <aside>
+    <div class="brand"><div class="logo">CA</div><h1>Contoso Active</h1></div>
+    <div class="tag">Operations Copilot Immersion · April 2026</div>
+    <nav>
+      <h3>The session</h3>
+      <a href="#welcome">Welcome</a>
+      <a href="#story">The story</a>
+      <a href="#cast">The cast</a>
+      <h3>Materials</h3>
+      <a href="#files">Demo files</a>
+      <a href="#prompts-chat">Copilot Chat</a>
+      <a href="#prompts-word">Word agent</a>
+      <a href="#prompts-pptx">PowerPoint agent</a>
+      <a href="#prompts-excel">Excel agent</a>
+      <a href="#prompts-dsr-edit">DSR · Edit w/ Copilot</a>
+      <a href="#prompts-dsr-analyst">DSR · Analyst</a>
+      <a href="#prompts-premium">Premium · Cowork</a>
+      <a href="#finale">The finale · HTML dashboard</a>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="hero" id="welcome">
+      <span class="pill">CONTOSO ACTIVE · OPERATIONS</span>
+      <h2>One day in Operations,<br/>compressed by Copilot.</h2>
+      <p>Indra Wijaya has 90 minutes to land what used to take a day — a Q1 close, an action plan, a COO brief, and a live dashboard. Today we feel the compression together.</p>
+      <div class="meta-row">
+        <span><b>Audience:</b> Operations team</span>
+        <span><b>Duration:</b> 1.5 hours</span>
+        <span><b>Mix:</b> M365 Copilot Basic + Premium</span>
+        <span><b>Store in focus:</b> CA PIM 1 (CA09)</span>
+      </div>
+    </section>
+
+    <div class="sechead"><div class="num">1</div><div><small>The narrative</small><h2 id="story">The story</h2></div></div>
+    <div class="card">
+      <p class="lead">It's <b>1 April 2026</b>. Q1 just closed and the numbers landed on Indra's desk overnight.</p>
+      <p><b>CA PIM 1</b> finished March at <b>IDR 4.74B</b> against a target of <b>IDR 5.4B</b> — <b>87.8% achievement, 12.2% short</b>. YoY momentum is healthy (+30% vs March 2025), but the gap to target needs explaining. Three days stand out:</p>
+      <ul>
+        <li><b>9 March</b> — sales collapsed to ~18% of target. A four-hour POS outage from 10:42.</li>
+        <li><b>14 March</b> — Saturday spike to <b>165% of target</b>. A run-club launch and a HOKA influencer drop. Speedgoat 6 sold out in 90 minutes.</li>
+        <li><b>27 March</b> — in-store dipped to 62% of target while Digimap (online) ran a 36-hour flash sale. Channel cannibalisation.</li>
+      </ul>
+      <p>The COO wants a brief by Friday: <i>what happened, why, what we're doing about it</i>. Yesterday Indra would have spent the day on it. Today, with Copilot, he's done before lunch — and the team sees how.</p>
+    </div>
+
+    <div class="sechead"><div class="num">2</div><div><small>Personas</small><h2 id="cast">The cast</h2></div></div>
+    <div class="card">
+      <div class="cast">
+        <div class="persona"><div class="avatar">IW</div><h5>Indra Wijaya</h5><div class="role">Regional Ops Manager</div><p>Owns the Q1 review. Lives in Excel and email. Wants insight, not more tabs.</p></div>
+        <div class="persona"><div class="avatar">PH</div><h5>Putri Hartono</h5><div class="role">Store Manager · CA PIM 1</div><p>On the floor every day. Felt the outage, ran the run-club, watched Digimap cannibalise her conversion.</p></div>
+        <div class="persona"><div class="avatar">LS</div><h5>Linda Setiawan</h5><div class="role">COO Office</div><p>Friday board meeting. Wants the 5-slide story, not the spreadsheet.</p></div>
+        <div class="persona"><div class="avatar">YP</div><h5>Yola Pratama</h5><div class="role">Marketing · Digimap</div><p>Ran the flash sale. Needs a channel rule so Ops and Digimap stop blaming each other.</p></div>
+      </div>
+    </div>
+
+    <div class="sechead"><div class="num">3</div><div><small>Download · open in your own tenant</small><h2 id="files">Demo files</h2></div></div>
+    <div class="card">
+      <p class="lead">These files seed the demo. Drop them in OneDrive/SharePoint so Copilot can ground on them.</p>
+      <div class="files-grid">
+        <a class="file-card" href="files/Contoso_Active_DSR_March_2026.xlsx" download><div class="ic xlsx">XLSX</div><div class="meta"><span class="nm">Contoso_Active_DSR_March_2026.xlsx</span><div class="ds">Daily Sales Report · CA PIM 1 · March 2026</div></div></a>
+        <a class="file-card" href="files/Store_Action_Plan_Draft.docx" download><div class="ic docx">DOCX</div><div class="meta"><span class="nm">Store_Action_Plan_Draft.docx</span><div class="ds">Seed memo + meeting notes for Word agent</div></div></a>
+        <a class="file-card" href="files/Market_Research_Notes.docx" download><div class="ic docx">DOCX</div><div class="meta"><span class="nm">Market_Research_Notes.docx</span><div class="ds">Indonesia sports retail Q1 context</div></div></a>
+        <a class="file-card" href="files/Sample_Emails_Teams.docx" download><div class="ic docx">DOCX</div><div class="meta"><span class="nm">Sample_Emails_Teams.docx</span><div class="ds">Curated emails + Teams chats for work-grounding</div></div></a>
+        <a class="file-card" href="files/Q1_COO_Briefing_Template.pptx" download><div class="ic pptx">PPTX</div><div class="meta"><span class="nm">Q1_COO_Briefing_Template.pptx</span><div class="ds">Branded blank deck for PowerPoint agent</div></div></a>
+        <a class="file-card" href="files/Contoso_Active_Story.pptx" download><div class="ic pptx">PPTX</div><div class="meta"><span class="nm">Contoso_Active_Story.pptx</span><div class="ds">One-slide scenario / opening slide</div></div></a>
+      </div>
+    </div>
+
+    <div class="sechead"><div class="num">4</div><div><small>Sample prompts · grouped by tool</small><h2>Prompts</h2></div></div>
+
+    <div class="card" id="prompts-chat">
+      <h3>Copilot Chat <span class="badge basic">Basic</span></h3>
+      <p class="lead">Ground the story in market + internal context before the agents take over.</p>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🌐 Web grounding · market context</div>
+        <p>Summarise 2026 trends in Indonesia's sports &amp; lifestyle retail (running, basketball, athleisure) and the impact of e-commerce on mall-based stores. Cite sources.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">💼 Work grounding · what's the team saying?</div>
+        <p>Find recent emails and Teams chats from regional managers and store managers about March 2026 store performance at CA PIM 1. Summarise the top 3 themes and flag any urgent operational issues.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🧭 Stitch them together</div>
+        <p>Combine the market summary with the internal email/Teams summary into a one-paragraph context block I can paste into a memo.</p>
+      </div>
+    </div>
+
+    <div class="card" id="prompts-word">
+      <h3>Word agent <span class="badge basic">Basic</span></h3>
+      <p class="lead">Open <code>Store_Action_Plan_Draft.docx</code> in Word, then run Copilot.</p>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">✍️ Expand the seed into a full memo</div>
+        <p>Using the meeting notes in this document and the March DSR summary, draft an action-plan memo to underperforming store managers. Tone: firm but supportive. Sections: Context, Findings, Required Actions (by 30 April with owner + due date), Support from HQ. Keep it under 1.5 pages.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🎯 Sharpen for impact</div>
+        <p>Rewrite the "Required Actions" section so each action is SMART — specific, measurable, assigned, realistic, time-bound. Add a one-line success metric to each.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🌏 Bahasa Indonesia version</div>
+        <p>Produce a Bahasa Indonesia version of this memo for store managers, preserving the structure and tone.</p>
+      </div>
+    </div>
+
+    <div class="card" id="prompts-pptx">
+      <h3>PowerPoint agent <span class="badge basic">Basic</span></h3>
+      <p class="lead">Open <code>Q1_COO_Briefing_Template.pptx</code> and let Copilot fill it.</p>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🎞️ Build the deck from the memo</div>
+        <p>Create a 5-slide COO briefing from <code>Store_Action_Plan_Draft.docx</code>. Slide 1 title, slide 2 Q1 highlights with key numbers, slide 3 underperformers &amp; anomaly days, slide 4 actions with owner/due-date, slide 5 the ask. Use the Contoso Active brand template already open.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">📊 Add a chart slide</div>
+        <p>Insert a new slide before the actions slide with a bar chart of Daily Sales 2026 vs Daily Sales 2025 vs Daily Target for March, using the data in <code>Contoso_Active_DSR_March_2026.xlsx</code>. Title it "March 2026 vs 2025 vs Target".</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🗣️ Speaker notes</div>
+        <p>Write speaker notes for each slide — 3 bullets max — in a confident, calm tone, as if Indra is presenting to the COO.</p>
+      </div>
+    </div>
+
+    <div class="card" id="prompts-excel">
+      <h3>Excel agent <span class="badge basic">Basic</span></h3>
+      <p class="lead">Quick prompts on <code>Contoso_Active_DSR_March_2026.xlsx</code> using the Copilot pane in Excel.</p>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">📈 MTD snapshot</div>
+        <p>Summarise total March 2026 sales, MTD vs Target %, YoY vs March 2025, and call out the three biggest deviation days from target.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🔍 Find the bad days</div>
+        <p>Which 5 days in March 2026 most under-performed against the daily target? Show date, day, actual, target, variance % and any reason in the Reason column.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">⚡ Anomaly call-out</div>
+        <p>Highlight any day where Daily Sales 2026 dropped more than 50% vs the same weekday's average for the month.</p>
+      </div>
+    </div>
+
+    <div class="card" id="prompts-dsr-edit">
+      <h3>DSR · Edit with Copilot in Excel <span class="badge basic">Basic</span></h3>
+      <p class="lead">In-grid Copilot edits the workbook itself — cleanup, formulas, conditional formatting, pivots.</p>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🧹 Clean to a usable sheet</div>
+        <p>Clean up the <b>Daily Sales CA09</b> sheet: promote row 8 to headers, drop empty columns, convert all sales columns to IDR-formatted numbers. Put the cleaned data on a new sheet called <code>DSR_Clean</code>. Don't touch the original.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">➗ YoY and MTD vs Target columns</div>
+        <p>On <code>DSR_Clean</code>, add a column <b>YoY Var %</b> comparing 2026 Daily Sales to the same date in 2025, and a column <b>MTD Var vs Target %</b> using the daily target from the <b>Daily Target</b> sheet. Add a running <b>MTD Sales 2026</b> column too.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">📅 Weekday averages</div>
+        <p>Add a <b>Weekday avg</b> column using the W1–W6 labels so I can compare Mondays, Tuesdays etc. across the month. Then build a pivot on a new sheet summarising sales by week and by channel (Store vs Digimap).</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🎨 Traffic-light formatting</div>
+        <p>Conditional-format <b>Daily Sales 2026</b> on <code>DSR_Clean</code>: any day below 70% of daily target = red, 70–95% = amber, ≥100% = green. Apply to the % Target column too.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">📋 Header summary block</div>
+        <p>Insert a summary block at the top of <code>DSR_Clean</code> with: MTD Sales 2026, MTD Sales 2025, YoY %, MTD vs Target %, Projected Month-End, Projected vs 5.4B Target. Make it look executive-ready with bold labels and IDR formatting.</p>
+      </div>
+    </div>
+
+    <div class="card" id="prompts-dsr-analyst">
+      <h3>DSR · Analyst agent <span class="badge premium">Premium</span></h3>
+      <p class="lead">Python-powered analysis on the same workbook — forecasting, anomalies, exec reporting, dashboarding.</p>
+
+      <h4>Forecasting</h4>
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🔮 Month-end forecast</div>
+        <p>Analyst: using the daily 2025 sales pattern and the actual March 2026 days-to-date in <code>DSR_Clean</code>, forecast the remaining days of March 2026 and the month-end total. Show the forecast vs the 5.4B IDR target and the probability of hitting it. Include a chart with actuals, forecast band, and target line.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🎚️ What-if scenarios</div>
+        <p>Analyst: build a what-if — if the last week of March improves by +10%, +15%, +20% vs the 2025 weekday pattern, what does the final month-end land at, and what's the gap to the 5.4B target? Show as a small table and a bar chart.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">📆 Q2 outlook</div>
+        <p>Analyst: from the March 2026 daily pattern and Q1 trajectory, build a Q2 2026 monthly forecast for CA PIM 1. Assume seasonality follows 2025. Output as a table (April, May, June with low / base / high) and a chart.</p>
+      </div>
+
+      <h4>Anomaly detection</h4>
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🚨 Z-score anomaly scan</div>
+        <p>Analyst: flag anomalous days in March 2026 vs the 2025 daily pattern and vs the daily target curve. Use a z-score on daily variance %. Return a table with Date, Day, Daily Sales 2026, Expected, Z-score, and a likely-cause hypothesis (cross-reference the Reason column on the Daily Target sheet). Plot a chart highlighting the outliers.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🛒 Channel cannibalisation check</div>
+        <p>Analyst: compare the Digimap channel daily trend (columns Sales / Acum Sales on the right of the sheet) to the in-store daily trend. Identify any days where Digimap moved opposite to store sales and explain the pattern. Suggest a channel pricing rule.</p>
+      </div>
+
+      <h4>Executive reporting</h4>
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">📝 Board summary (markdown)</div>
+        <p>Analyst: produce an executive board summary for the COO on CA PIM 1 March 2026 performance. Include: headline KPIs (MTD Sales, YoY%, vs Target%), top 3 takeaways, top 3 risks, top 3 recommended actions, and a one-paragraph narrative. Output in markdown ready to paste into the Word memo.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🖼️ Slide-ready charts</div>
+        <p>Analyst: build 3 slide-ready charts I can paste into the COO deck — (a) Daily sales 2026 vs 2025 vs Target line chart, (b) Weekly mix W1-W6 bar chart, (c) Store vs Digimap channel split donut. Export as images with a clean white background.</p>
+      </div>
+
+      <h4>In-Excel dashboard + Plan</h4>
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">📊 One-page dashboard sheet</div>
+        <p>Analyst: create a one-page in-workbook dashboard on a new sheet called <code>Dashboard</code> for CA PIM 1 March 2026 — KPI cards (MTD Sales, YoY%, vs Target%, Forecast Month-End), a daily actual-vs-target line chart, a YoY bar chart by week, a Store vs Digimap donut, and a top-5 best/worst day table. Use the Contoso Active orange &amp; charcoal palette.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🧠 Plan in Copilot in Excel</div>
+        <p>Plan: forecast Q2 sales for CA PIM 1, simulate a 5% conversion lift in the bottom-quartile weekdays, and write the steps as an auditable plan that updates automatically as new daily rows arrive through April.</p>
+      </div>
+    </div>
+
+    <div class="card" id="prompts-premium">
+      <h3>Premium Cowork · agents &amp; new features <span class="badge premium">Premium</span></h3>
+      <p class="lead">Researcher · Image · Copilot Pages — extend the story beyond a single workbook.</p>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🔬 Researcher · competitor benchmark</div>
+        <p>Researcher: build a benchmark on how Nike, Adidas and Decathlon flagship stores in Jakarta are driving Q1 2026 footfall — events, run-clubs, exclusive drops, channel rules. Output a structured brief with sources I can cite in my COO deck.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🎨 Image creator · hero banner</div>
+        <p>Generate a hero banner for the COO briefing deck — modern Indonesian sports retail flagship interior at daylight, premium athleisure feel, energetic but uncluttered. Wide aspect ratio.</p>
+      </div>
+
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">📄 Copilot Pages · share the story</div>
+        <p>Create a Copilot Page titled "CA PIM 1 · March 2026 Review" that consolidates: the MTD numbers, the three anomaly days with explanations, the action plan, and links to the DSR and the COO deck. Share with the Operations team.</p>
+      </div>
+    </div>
+
+    <div class="sechead"><div class="num">5</div><div><small>Cowork generates the dashboard live</small><h2 id="finale">The finale</h2></div></div>
+    <div class="callout">
+      <h3>Cowork — build a live HTML Operations Dashboard <span class="badge premium">Premium</span></h3>
+      <p>Paste this single prompt into Cowork (with the DSR attached). Cowork generates a self-contained HTML file you can open immediately in the browser and demo to the COO. No template, no design work — just the prompt.</p>
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">🚀 The finale prompt</div>
+        <p>Using the data in <code>Contoso_Active_DSR_March_2026.xlsx</code> (store <b>CA PIM 1</b>, March 2026, Target 5.4B IDR), build me a single self-contained HTML file called <code>Contoso_Active_PIM1_March_2026_Dashboard.html</code> for the COO review.<br/><br/>
+        Requirements:<br/>
+        • Clean executive layout with a Contoso Active header (orange #E25522 / charcoal #1F2937).<br/>
+        • Four KPI tiles at the top — <b>MTD Sales 2026</b>, <b>YoY vs 2025 %</b>, <b>MTD vs Target %</b>, <b>Forecast Month-End vs 5.4B Target</b> — each with a small sparkline.<br/>
+        • Daily line chart: Daily Sales 2026 vs Daily Sales 2025 vs Daily Target.<br/>
+        • Weekly bar chart W1–W6 (2026 vs 2025).<br/>
+        • Store vs Digimap channel split donut.<br/>
+        • Top-5 best and bottom-5 worst days table with variance % highlighted red/green.<br/>
+        • An auto-generated "Key Insights" panel summarising YoY momentum, the biggest anomaly days (including 9 Mar, 14 Mar, 27 Mar), and the likelihood of hitting the 5.4B target.<br/><br/>
+        Use only inline CSS and a single chart library via CDN. Make it presentable to the COO and ready to open directly in a browser.</p>
+      </div>
+    </div>
+
+    <p style="text-align:center;color:var(--muted);font-size:12px;margin-top:40px">
+      Contoso Active · Operations Copilot Immersion · April 2026 · Confidential
+    </p>
+  </main>
+</div>
+
+<script>
+const PWHASH = "fb4d8c61530867d818d454dffe7050050df519ce6550f7789b21f37eef96e85f";
+
+async function sha256(s){
+  const buf = new TextEncoder().encode(s);
+  const h = await crypto.subtle.digest("SHA-256", buf);
+  return Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,"0")).join("");
+}
+
+async function checkPw(){
+  const v = document.getElementById("pw").value.trim();
+  const err = document.getElementById("err");
+  if(!v){ err.textContent="Enter the password."; return; }
+  const h = await sha256(v);
+  if(h === PWHASH){
+    sessionStorage.setItem("ca-immersion-ok","1");
+    document.getElementById("gate").style.display="none";
+    document.getElementById("content").style.display="grid";
+  } else {
+    err.textContent="Incorrect password.";
+  }
+}
+
+document.getElementById("pw").addEventListener("keydown", e => { if(e.key==="Enter") checkPw(); });
+
+if(sessionStorage.getItem("ca-immersion-ok")==="1"){
+  document.getElementById("gate").style.display="none";
+  document.getElementById("content").style.display="grid";
+}
+
+document.addEventListener("click", e => {
+  if(e.target.classList && e.target.classList.contains("copy-btn")){
+    const promptDiv = e.target.closest(".prompt");
+    const text = promptDiv.querySelector("p").innerText;
+    navigator.clipboard.writeText(text).then(()=>{
+      e.target.textContent = "Copied!";
+      e.target.classList.add("done");
+      setTimeout(()=>{ e.target.textContent="Copy"; e.target.classList.remove("done"); }, 1600);
+    });
+  }
+});
+</script>
+</body>
+</html>
