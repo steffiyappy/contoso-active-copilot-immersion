@@ -253,7 +253,7 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
               <div style="padding:10px;background:var(--panel2);display:grid;grid-template-columns:1fr 1fr;gap:12px">
                 <div>
                   <p style="margin:0 0 4px;font-size:12px;font-weight:700;color:var(--ink)">Ship the live HTML dashboard</p>
-                  <p style="margin:0;font-size:10px;color:var(--muted);line-height:1.55">One Cowork prompt with the DSR attached. Cowork generates a self-contained HTML dashboard — KPI tiles, daily line, weekly bars, channel donut, auto-Key Insights — ready to open and demo to the COO.</p>
+                  <p style="margin:0;font-size:10px;color:var(--muted);line-height:1.55">One Cowork prompt with the DSR attached. Cowork generates a self-contained HTML dashboard with <b>interactive slicers</b> — date range, week, day-of-week, channel, anomaly filter — every KPI, chart and table re-renders live for the COO.</p>
                 </div>
                 <div style="display:flex;flex-direction:column;gap:5px;justify-content:center">
                   <div style="font-size:9.5px;color:var(--muted)">📎 Input:</div>
@@ -555,19 +555,33 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
     <div class="sechead"><div class="num">5</div><div><small>Cowork generates the dashboard live</small><h2 id="finale">The finale</h2></div></div>
     <div class="callout">
       <h3>Cowork — build a live HTML Operations Dashboard <span class="badge premium">Premium</span></h3>
-      <p>Paste this single prompt into Cowork (with the DSR attached). Cowork generates a self-contained HTML file you can open immediately in the browser and demo to the COO. No template, no design work — just the prompt.</p>
+      <p>Paste this single prompt into Cowork (with the DSR attached). Cowork generates a self-contained HTML file you can open immediately in the browser and demo to the COO. <b>It includes interactive slicers so you can slice and dice the data live in front of the audience</b> — every KPI, chart and table re-renders on the fly.</p>
       <div class="prompt"><button class="copy-btn">Copy</button>
         <div class="ptitle">🚀 The finale prompt</div>
         <p>Using the data in <code>Contoso_Active_DSR_March_2026.xlsx</code> (store <b>CA PIM 1</b>, March 2026, Target 5.4B IDR), build me a single self-contained HTML file called <code>Contoso_Active_PIM1_March_2026_Dashboard.html</code> for the COO review.<br/><br/>
-        Requirements:<br/>
+        <b>Layout:</b><br/>
         • Clean executive layout with a Contoso Active header (orange #E25522 / charcoal #1F2937).<br/>
-        • Four KPI tiles at the top — <b>MTD Sales 2026</b>, <b>YoY vs 2025 %</b>, <b>MTD vs Target %</b>, <b>Forecast Month-End vs 5.4B Target</b> — each with a small sparkline.<br/>
-        • Daily line chart: Daily Sales 2026 vs Daily Sales 2025 vs Daily Target.<br/>
-        • Weekly bar chart W1–W6 (2026 vs 2025).<br/>
-        • Store vs Digimap channel split donut.<br/>
-        • Top-5 best and bottom-5 worst days table with variance % highlighted red/green.<br/>
-        • An auto-generated "Key Insights" panel summarising YoY momentum, the biggest anomaly days (including 9 Mar, 14 Mar, 27 Mar), and the likelihood of hitting the 5.4B target.<br/><br/>
-        Use only inline CSS and a single chart library via CDN. Make it presentable to the COO and ready to open directly in a browser.</p>
+        • A sticky <b>slicer bar</b> just below the header, then KPI tiles, then charts, then tables, then Key Insights.<br/><br/>
+        <b>Interactive slicers (Power BI–style — drive every visual on the page):</b><br/>
+        1. <b>Date range</b> — twin date pickers (default: full March 2026) with quick buttons for W1, W2, W3, W4, W5, W6, MTD, "Weekdays only", "Weekends only".<br/>
+        2. <b>Day of week</b> — multi-select pills Mon–Sun (default all on).<br/>
+        3. <b>Channel</b> — toggle buttons for <code>Store</code>, <code>Digimap</code>, <code>Both</code> (default Both).<br/>
+        4. <b>Compare to</b> — radio: <code>2025</code>, <code>Daily Target</code>, <code>Both</code> (default Both).<br/>
+        5. <b>Anomaly filter</b> — checkboxes: <code>Show all days</code> / <code>Only anomaly days</code> (|z-score| ≥ 1.5 vs 31-day mean) / <code>Exclude anomaly days</code>.<br/>
+        6. <b>Reset</b> button that restores defaults.<br/>
+        Every slicer change must instantly recompute KPIs, all charts, the best/worst-day table, and the Key Insights text (no page reload). Show an active-filter summary chip row above the KPIs (e.g. "W2–W4 · Weekdays · Store only · 14 days").<br/><br/>
+        <b>KPIs (4 tiles, react to slicers):</b><br/>
+        • MTD Sales 2026 (filtered) · YoY vs 2025 % · vs Target % · Forecast Month-End vs 5.4B Target. Each tile has a 14-pt sparkline of the filtered daily series.<br/><br/>
+        <b>Charts:</b><br/>
+        • Daily line chart: Daily Sales 2026 vs Daily Sales 2025 vs Daily Target. Anomaly days marked with a dot &amp; tooltip reason. Drag-to-zoom.<br/>
+        • Weekly bar chart W1–W6 (2026 vs 2025), highlights the selected weeks.<br/>
+        • Store vs Digimap channel split donut with % labels.<br/>
+        • Click-through: clicking a bar/point sets that period as the active filter.<br/><br/>
+        <b>Tables:</b><br/>
+        • Top-5 best and bottom-5 worst days within the current filter, with variance % vs target coloured red/green, and a reason column (auto-filled for known anomalies: 9 Mar POS outage, 14 Mar run-club + HOKA drop, 27 Mar Digimap cannibalisation).<br/><br/>
+        <b>Key Insights (auto-narrative):</b><br/>
+        • Re-writes itself every time a slicer changes — YoY momentum, biggest swing day in the selected range, target attainment probability, and one channel observation.<br/><br/>
+        <b>Tech:</b> Single self-contained .html file. Inline CSS. One chart library via CDN (Chart.js or ECharts is fine). All data embedded in a JS array. No build step. Must open and work offline once downloaded.</p>
       </div>
     </div>
 
