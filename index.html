@@ -286,33 +286,36 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
 
     <div class="card" style="background:linear-gradient(135deg,rgba(37,99,235,.06),rgba(226,85,34,.06))">
       <h3>License at a glance</h3>
-      <p class="lead">Use this to map each prompt to who in your org can run it.</p>
+      <p class="lead">M365 Copilot ships as <b>one paid add-on</b> — when we say "Premium" below, we mean a user who has the M365 Copilot add-on license. "Basic" = no add-on (web Chat only).</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px">
         <div style="padding:14px;background:var(--panel2);border:1px solid var(--border);border-radius:10px">
-          <h4 style="margin-top:0;color:#1e40af">M365 Copilot · Basic <span class="badge basic">Basic</span></h4>
-          <p style="margin:6px 0;color:var(--muted);font-size:13px">The standard M365 Copilot seat — Copilot Chat with work grounding, plus Copilot in Word, PowerPoint, Excel, Outlook, Teams.</p>
+          <h4 style="margin-top:0;color:#1e40af">No add-on · Basic <span class="badge basic">Basic</span></h4>
+          <p style="margin:6px 0;color:var(--muted);font-size:13px">Free Copilot Chat in the browser — public web grounding only.</p>
           <ul style="font-size:13px;color:var(--ink);margin:8px 0 0">
-            <li>Copilot Chat (web + work)</li>
-            <li>Copilot in Word / PowerPoint / Excel</li>
+            <li>Copilot Chat · <b>web grounding only</b></li>
+            <li>No work grounding (no Outlook / Teams / SharePoint search)</li>
+            <li>No in-app Copilot in Word / Excel / PowerPoint</li>
           </ul>
         </div>
         <div style="padding:14px;background:var(--card-soft);border:1px solid #fdba74;border-radius:10px">
-          <h4 style="margin-top:0;color:var(--accent)">M365 Copilot · Premium <span class="badge premium">Premium</span></h4>
-          <p style="margin:6px 0;color:var(--muted);font-size:13px">The agents we'll use in the second half of the demo.</p>
+          <h4 style="margin-top:0;color:var(--accent)">M365 Copilot add-on · Premium <span class="badge premium">Premium</span></h4>
+          <p style="margin:6px 0;color:var(--muted);font-size:13px">Everything in this 90-minute demo lives here — one SKU per user.</p>
           <ul style="font-size:13px;color:var(--ink);margin:8px 0 0">
-            <li><b>Edit with Copilot</b> · inline rewrites in W / X / P</li>
+            <li>Copilot Chat · <b>web + work grounding</b> (Outlook, Teams, SharePoint)</li>
+            <li>Copilot in Word / PowerPoint / Excel · including <b>Edit with Copilot</b> inline</li>
             <li><b>Researcher</b> · deep multi-source research with citations</li>
-            <li><b>Analyst</b> · Python-powered analysis on your files</li>
-            <li><b>Cowork</b> · side-by-side artifact generation (HTML, code, docs)</li>
-            <li><b>Agent Builder</b> · build a custom agent grounded on your files</li>
+            <li><b>Analyst</b> · Python-powered analysis on attached files</li>
+            <li><b>Cowork</b> · side-by-side artifact generation</li>
+            <li><b>Agent Builder</b> · build a declarative agent grounded on SharePoint files</li>
           </ul>
         </div>
       </div>
+      <p style="font-size:12px;color:var(--muted);margin:14px 0 0;line-height:1.55">⚠️ <b>Demo prerequisites:</b> Frontier program enabled in the tenant (admin centre → Copilot settings) for Researcher/Analyst/Cowork · demo files in OneDrive with <b>AutoSave on</b> for Edit-with-Copilot in Excel · Researcher pre-run ahead of time (5–15 min per deep task) · end-users of the Agent Builder agent also need the M365 Copilot add-on to read SharePoint-grounded content.</p>
     </div>
 
     <div class="card" id="prompts-chat">
-      <h3>Copilot Chat <span class="badge basic">Basic</span></h3>
-      <p class="lead">Ground the story in market + internal context before the agents take over.</p>
+      <h3>Copilot Chat <span class="badge premium">Premium</span></h3>
+      <p class="lead">Ground the story in market + internal context before the agents take over. <span style="color:var(--muted);font-size:12px">(Web grounding is also available in free Copilot Chat; work grounding across Outlook/Teams requires the M365 Copilot add-on.)</span></p>
 
       <div class="prompt"><button class="copy-btn">Copy</button>
         <div class="ptitle">🌐 Web grounding · market context</div>
@@ -336,7 +339,7 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
 
       <div class="prompt"><button class="copy-btn">Copy</button>
         <div class="ptitle">📊 Excel · clean &amp; analyse the DSR</div>
-        <p>In <code>Contoso_Active_DSR_March_2026.xlsx</code>, clean up <b>Daily Sales CA09</b> into a new sheet <code>DSR_Clean</code> (promote row 8 to headers, drop empty columns, IDR-format numbers). Then add <b>YoY Var %</b> vs 2025, <b>MTD Var vs Target %</b>, and traffic-light formatting (red &lt;70%, amber 70–95%, green ≥100%). Finish with a one-paragraph MTD snapshot.</p>
+        <p>In <code>Contoso_Active_DSR_March_2026.xlsx</code> (saved to OneDrive with <b>AutoSave ON</b>), clean up <b>Daily Sales CA09</b> into a new sheet <code>DSR_Clean</code> (promote row 8 to headers, drop empty columns, IDR-format numbers). Then add <b>YoY Var %</b> vs 2025, <b>MTD Var vs Target %</b>, and traffic-light formatting (red &lt;70%, amber 70–95%, green ≥100%). Finish with a one-paragraph MTD snapshot. <span style="color:var(--muted);font-size:12px">Tip: Edit-with-Copilot in Excel works best on structured tables — if the data is too raw, do the row-8-to-headers step manually first, then let Copilot do the rest.</span></p>
       </div>
 
       <div class="prompt"><button class="copy-btn">Copy</button>
@@ -449,8 +452,8 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
       </div>
 
       <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">📣 Publish &amp; share</div>
-        <p>Publish the agent to the Contoso Active Operations channel in Teams. Set it so any store manager can chat with it from Teams or M365 Copilot. Add a default starter prompt: "What does HQ need from me this week?"</p>
+        <div class="ptitle">📣 Share with the Operations team</div>
+        <p>Share <b>Store Ops Coach</b> with the Contoso Active Operations team in Microsoft 365. Members will get a notification in their Teams home channel and can open the agent from the <b>M365 Copilot app</b> (sidebar in Teams / m365.cloud.microsoft) any time. Add a starter prompt: "What does HQ need from me this week?" <span style="color:var(--muted);font-size:12px">Note: declarative agents built in Agent Builder are accessed via the M365 Copilot app — to deploy as a true Teams channel chatbot, use Copilot Studio (separate license). Members must also hold the M365 Copilot add-on to read the SharePoint-grounded knowledge.</span></p>
       </div>
     </div>
 
