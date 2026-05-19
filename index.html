@@ -126,7 +126,8 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
       <a href="#prompts-excel">Excel agent</a>
       <a href="#prompts-dsr-edit">DSR · Edit w/ Copilot</a>
       <a href="#prompts-dsr-analyst">DSR · Analyst</a>
-      <a href="#prompts-premium">Premium · Cowork</a>
+      <a href="#prompts-premium">Premium · agent stack</a>
+      <a href="#prompts-bonus">Bonus · Outlook + Teams</a>
       <a href="#finale">The finale · HTML dashboard</a>
     </nav>
   </aside>
@@ -180,6 +181,33 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
     </div>
 
     <div class="sechead"><div class="num">4</div><div><small>Sample prompts · grouped by tool</small><h2>Prompts</h2></div></div>
+
+    <div class="card" style="background:linear-gradient(135deg,rgba(37,99,235,.06),rgba(226,85,34,.06))">
+      <h3>License at a glance</h3>
+      <p class="lead">Use this to map each prompt to who in your org can run it.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px">
+        <div style="padding:14px;background:var(--panel2);border:1px solid var(--border);border-radius:10px">
+          <h4 style="margin-top:0;color:#1e40af">M365 Copilot · Basic <span class="badge basic">Basic</span></h4>
+          <p style="margin:6px 0;color:var(--muted);font-size:13px">The standard M365 Copilot seat — Copilot Chat with work grounding, plus Copilot in Word, PowerPoint, Excel, Outlook, Teams.</p>
+          <ul style="font-size:13px;color:var(--ink);margin:8px 0 0">
+            <li>Copilot Chat (web + work)</li>
+            <li>Copilot in Word / PowerPoint / Excel</li>
+            <li>Edit with Copilot in Excel (in-grid)</li>
+          </ul>
+        </div>
+        <div style="padding:14px;background:var(--card-soft);border:1px solid #fdba74;border-radius:10px">
+          <h4 style="margin-top:0;color:var(--accent)">M365 Copilot · Premium <span class="badge premium">Premium</span></h4>
+          <p style="margin:6px 0;color:var(--muted);font-size:13px">The full agent stack — reasoning agents, Cowork (artifact mode), and the newest Excel features.</p>
+          <ul style="font-size:13px;color:var(--ink);margin:8px 0 0">
+            <li><b>Researcher</b> · deep multi-source research</li>
+            <li><b>Analyst</b> · Python-powered analysis on your files</li>
+            <li><b>Cowork</b> · side-by-side artifact generation (HTML, code, docs)</li>
+            <li><b>Plan in Copilot in Excel</b> · multi-step auditable Excel automation</li>
+            <li>Image creator, Copilot Pages</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <div class="card" id="prompts-chat">
       <h3>Copilot Chat <span class="badge basic">Basic</span></h3>
@@ -346,22 +374,72 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
     </div>
 
     <div class="card" id="prompts-premium">
-      <h3>Premium Cowork · agents &amp; new features <span class="badge premium">Premium</span></h3>
-      <p class="lead">Researcher · Image · Copilot Pages — extend the story beyond a single workbook.</p>
+      <h3>Premium · the agent stack <span class="badge premium">Premium</span></h3>
+      <p class="lead">From here we leave the standard seat and unlock the full Premium agent stack. The same DSR, the same memo — now with deeper reasoning, richer research, and a side-by-side workspace.</p>
 
+      <h4>🔬 Researcher · deep external research</h4>
       <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">🔬 Researcher · competitor benchmark</div>
+        <div class="ptitle">Competitor benchmark</div>
         <p>Researcher: build a benchmark on how Nike, Adidas and Decathlon flagship stores in Jakarta are driving Q1 2026 footfall — events, run-clubs, exclusive drops, channel rules. Output a structured brief with sources I can cite in my COO deck.</p>
       </div>
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">Run-club playbook</div>
+        <p>Researcher: study how Nike Run Club, ASICS Front Runner and Lululemon Sweat Collective build retention in Southeast Asia. What's the format, cadence, incentive structure, and reported uplift in footfall? Give me a one-page playbook I can adapt for CA PIM 1.</p>
+      </div>
+
+      <h4>🧪 Analyst · Python on your files</h4>
+      <p style="color:var(--muted);font-size:13px;margin:4px 0 8px">Full Analyst prompt set for the DSR is in the <a href="#prompts-dsr-analyst">DSR · Analyst</a> section above — forecasting, anomalies, board summary, in-Excel dashboard.</p>
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">Cross-source synthesis</div>
+        <p>Analyst: take the March DSR, the meeting notes in <code>Store_Action_Plan_Draft.docx</code>, and the email/Teams excerpts in <code>Sample_Emails_Teams.docx</code>. Reconcile the qualitative reasons with the quantitative anomaly days. Output a table: Date · Anomaly · Quant signal · Qual evidence · Confidence.</p>
+      </div>
+
+      <h4>🧠 Plan in Copilot in Excel · auditable multi-step</h4>
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">Q2 forecast with conversion lift simulation</div>
+        <p>Plan: forecast Q2 2026 sales for CA PIM 1 from the March daily pattern and 2025 seasonality. Simulate a 5% conversion lift on the bottom-quartile weekdays. Write the steps as an auditable plan that updates automatically as new daily rows are added through April. Surface each step with a checkpoint I can approve.</p>
+      </div>
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">Channel rebalance scenario</div>
+        <p>Plan: build a scenario where Digimap promos are blacked-out during the in-store Saturday peak (10:00–14:00). Estimate the recovered in-store conversion based on the 27 March cannibalisation pattern. Output side-by-side: current vs rebalanced, in IDR, with each transformation step listed.</p>
+      </div>
+
+      <h4>🎨 Image creator · hero visuals</h4>
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">COO deck hero banner</div>
+        <p>Generate a hero banner for the COO briefing deck — modern Indonesian sports retail flagship interior at daylight, premium athleisure feel, energetic but uncluttered. Wide aspect ratio.</p>
+      </div>
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">Run-club poster</div>
+        <p>Generate a poster for the CA PIM 1 Saturday Run Club — 6am start, sunrise vibe, diverse Jakarta runners in HOKA. Bold typography area at the top, Contoso Active orange accent.</p>
+      </div>
+
+      <h4>📄 Copilot Pages · share the story</h4>
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">One Page for the leadership team</div>
+        <p>Create a Copilot Page titled "CA PIM 1 · March 2026 Review" that consolidates: the MTD numbers, the three anomaly days with explanations, the action plan, the Researcher competitor brief, and links to the DSR, the memo, and the COO deck. Share with the Operations leadership channel and allow co-editing.</p>
+      </div>
+
+      <h4>🤝 Cowork · side-by-side artifact mode</h4>
+      <p style="color:var(--muted);font-size:13px;margin:4px 0 8px">Cowork is the umbrella experience — open a Cowork session with the DSR attached and the agents above run inside it. The finale below is generated in Cowork.</p>
+      <div class="prompt"><button class="copy-btn">Copy</button>
+        <div class="ptitle">Memo + deck + dashboard in one Cowork session</div>
+        <p>Cowork: open a workspace with <code>Contoso_Active_DSR_March_2026.xlsx</code>, <code>Store_Action_Plan_Draft.docx</code> and <code>Q1_COO_Briefing_Template.pptx</code>. Walk me through: (1) finalise the memo from the analysis, (2) populate the deck from the memo, (3) generate a one-page HTML dashboard from the DSR. Keep each artifact visible side-by-side so I can iterate.</p>
+      </div>
+    </div>
+
+    <div class="card" id="prompts-bonus">
+      <h3>Bonus · if there's time <span class="badge basic">Basic</span></h3>
+      <p class="lead">Two quick add-ons that round out a real Ops Manager's day.</p>
 
       <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">🎨 Image creator · hero banner</div>
-        <p>Generate a hero banner for the COO briefing deck — modern Indonesian sports retail flagship interior at daylight, premium athleisure feel, energetic but uncluttered. Wide aspect ratio.</p>
+        <div class="ptitle">📧 Copilot in Outlook · draft the email to the COO</div>
+        <p>Draft a short, confident email to Linda Setiawan (COO Office) attaching the COO deck and the memo. Three lines max: (1) March landed 87.8% of target, three anomaly days explain most of it, (2) action plan inside, (3) Friday board-ready.</p>
       </div>
 
       <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">📄 Copilot Pages · share the story</div>
-        <p>Create a Copilot Page titled "CA PIM 1 · March 2026 Review" that consolidates: the MTD numbers, the three anomaly days with explanations, the action plan, and links to the DSR and the COO deck. Share with the Operations team.</p>
+        <div class="ptitle">👥 Copilot in Teams · recap the regional review</div>
+        <p>From the 31 March Regional Operations review meeting recording, give me: a 5-bullet recap, the decisions made, the open questions, and any commitments from store managers with owner and due date.</p>
       </div>
     </div>
 
