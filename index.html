@@ -117,7 +117,6 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
       <h3>The session</h3>
       <a href="#welcome">Welcome</a>
       <a href="#story">The story</a>
-      <a href="#cast">The cast</a>
       <h3>Materials</h3>
       <a href="#files">Demo files</a>
       <a href="#prompts-chat">Copilot Chat</a>
@@ -145,27 +144,251 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
       </div>
     </section>
 
-    <div class="sechead"><div class="num">1</div><div><small>The narrative</small><h2 id="story">The story</h2></div></div>
-    <div class="card">
-      <p class="lead">It's <b>1 April 2026</b>. Q1 just closed and the numbers landed on Indra's desk overnight.</p>
-      <p><b>CA PIM 1</b> finished March at <b>IDR 4.74B</b> against a target of <b>IDR 5.4B</b> — <b>87.8% achievement, 12.2% short</b>. YoY momentum is healthy (+30% vs March 2025), but the gap to target needs explaining. Three days stand out:</p>
-      <ul>
-        <li><b>9 March</b> — sales collapsed to ~18% of target. A four-hour POS outage from 10:42.</li>
-        <li><b>14 March</b> — Saturday spike to <b>165% of target</b>. A run-club launch and a HOKA influencer drop. Speedgoat 6 sold out in 90 minutes.</li>
-        <li><b>27 March</b> — in-store dipped to 62% of target while Digimap (online) ran a 36-hour flash sale. Channel cannibalisation.</li>
-      </ul>
-      <p>The COO wants a brief by Friday: <i>what happened, why, what we're doing about it</i>. Yesterday Indra would have spent the day on it. Today, with Copilot, he's done before lunch — and the team sees how.</p>
-    </div>
-
-    <div class="sechead"><div class="num">2</div><div><small>Personas</small><h2 id="cast">The cast</h2></div></div>
-    <div class="card">
-      <div class="cast">
-        <div class="persona"><div class="avatar">IW</div><h5>Indra Wijaya</h5><div class="role">Regional Ops Manager</div><p>Owns the Q1 review. Lives in Excel and email. Wants insight, not more tabs.</p></div>
-        <div class="persona"><div class="avatar">PH</div><h5>Putri Hartono</h5><div class="role">Store Manager · CA PIM 1</div><p>On the floor every day. Felt the outage, ran the run-club, watched Digimap cannibalise her conversion.</p></div>
-        <div class="persona"><div class="avatar">LS</div><h5>Linda Setiawan</h5><div class="role">COO Office</div><p>Friday board meeting. Wants the 5-slide story, not the spreadsheet.</p></div>
-        <div class="persona"><div class="avatar">YP</div><h5>Yola Pratama</h5><div class="role">Marketing · Digimap</div><p>Ran the flash sale. Needs a channel rule so Ops and Digimap stop blaming each other.</p></div>
+    <!-- THE STORY SECTION -->
+    <section id="story">
+      <div class="sechead" style="margin-top:8px">
+        <div class="num" style="background:linear-gradient(135deg,var(--ca),#f59e0b);font-size:14px">▶</div>
+        <div><small>The story</small><h2>The Story<small style="display:block;color:var(--muted);font-size:13px;font-weight:400;letter-spacing:0;text-transform:none;margin-top:2px">One workday. Twelve moments. From DSR to decision by lunch.</small></h2></div>
       </div>
-    </div>
+
+      <div style="display:grid;grid-template-columns:240px 1fr;gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:24px">
+
+        <!-- LEFT PANEL -->
+        <div style="background:linear-gradient(180deg,var(--sidebar-a),var(--sidebar-b));padding:24px 18px;display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0;font-size:8px;letter-spacing:2px;font-weight:700;color:var(--accent2);text-transform:uppercase">Copilot in M365</p>
+          <h3 style="margin:0;font-size:20px;font-weight:800;color:#fff;line-height:1.2">AI Assistant<br>to AI Doer</h3>
+
+          <div style="margin-top:6px">
+            <p style="margin:0 0 3px;font-size:7.5px;letter-spacing:1.5px;font-weight:700;color:var(--accent2);text-transform:uppercase">Persona</p>
+            <p style="margin:0;font-size:13px;font-weight:700;color:#fff">Indra Wijaya</p>
+            <p style="margin:2px 0 0;font-size:10.5px;color:#94a3b8">Regional Operations Manager<br>Contoso Active</p>
+          </div>
+
+          <div style="margin-top:6px">
+            <p style="margin:0 0 3px;font-size:7.5px;letter-spacing:1.5px;font-weight:700;color:var(--accent2);text-transform:uppercase">The Mission</p>
+            <p style="margin:0;font-size:10.5px;color:#cbd5e1;line-height:1.6">One COO brief by Friday: explain the 12.2% March miss at CA PIM 1, propose actions, and ship a live dashboard. Yesterday a 10-hour day. Today, before lunch.</p>
+          </div>
+
+          <div style="margin-top:6px">
+            <p style="margin:0 0 3px;font-size:7.5px;letter-spacing:1.5px;font-weight:700;color:var(--accent2);text-transform:uppercase">The Numbers</p>
+            <p style="margin:0;font-size:10.5px;color:#cbd5e1;line-height:1.6">MTD <b style="color:#fff">IDR 4.74B</b> vs target <b style="color:#fff">5.4B</b><br>Achievement <b style="color:#fff">87.8%</b> · YoY <b style="color:#fff">+30%</b><br>3 anomaly days: 9 · 14 · 27 March</p>
+          </div>
+
+          <div style="margin-top:6px;padding:10px;background:rgba(255,255,255,.06);border-radius:8px;border:1px solid rgba(255,255,255,.1)">
+            <p style="margin:0 0 3px;font-size:7.5px;letter-spacing:1.5px;font-weight:700;color:var(--accent2);text-transform:uppercase">The Punchline</p>
+            <p style="margin:0;font-size:11.5px;font-weight:700;font-style:italic;color:#fff;line-height:1.4">One workday.<br>Twelve moments.<br>From DSR to decision.</p>
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div style="background:var(--panel);padding:20px 18px 14px">
+          <h3 style="margin:0 0 14px;font-size:16px;font-weight:700;color:var(--ink)">Twelve moments across one workday</h3>
+
+          <!-- EXERCISE 1 -->
+          <div style="margin-bottom:14px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+              <span style="background:#1F2937;color:#fff;font-size:9px;font-weight:700;padding:3px 9px;border-radius:4px;letter-spacing:.5px">EXERCISE 1 · 12 min</span>
+              <span style="font-size:12px;font-weight:700;color:var(--ink)">Ground the context</span>
+              <span class="badge basic" style="margin-left:0">Basic</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">
+              <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+                <div style="background:#1e3a5f;padding:4px 8px;display:flex;align-items:center;gap:5px">
+                  <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">01</span>
+                  <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Copilot Chat · Web</span>
+                </div>
+                <div style="padding:8px;background:var(--panel2)">
+                  <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Scan the market</p>
+                  <p style="margin:0 0 5px;font-size:9px;font-style:italic;color:var(--accent)">Task 1.1</p>
+                  <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">Q1 2026 Indonesia sportswear trends, e-commerce vs mall stores, what Nike / Adidas / Decathlon flagships are doing.</p>
+                </div>
+              </div>
+              <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+                <div style="background:#0f4c75;padding:4px 8px;display:flex;align-items:center;gap:5px">
+                  <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">02</span>
+                  <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Copilot Chat · Work</span>
+                </div>
+                <div style="padding:8px;background:var(--panel2)">
+                  <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Surface internal signals</p>
+                  <p style="margin:0 0 5px;font-size:9px;font-style:italic;color:var(--accent)">Task 1.2 · <span style="background:#fff3ec;color:#c2410c;border-radius:3px;padding:0 4px;font-style:normal">📎 Sample_Emails_Teams.docx</span></p>
+                  <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">Mine emails + Teams chatter from store managers about March performance. Top 3 themes, urgent issues flagged.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCISE 2 -->
+          <div style="margin-bottom:14px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+              <span style="background:#1F2937;color:#fff;font-size:9px;font-weight:700;padding:3px 9px;border-radius:4px;letter-spacing:.5px">EXERCISE 2 · 23 min</span>
+              <span style="font-size:12px;font-weight:700;color:var(--ink)">Analyse the numbers</span>
+              <span class="badge basic" style="margin-left:0">Basic</span>
+              <span class="badge premium" style="margin-left:0">+ Premium</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+              <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+                <div style="background:#14532d;padding:4px 8px;display:flex;align-items:center;gap:5px">
+                  <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">03</span>
+                  <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Excel Copilot</span>
+                </div>
+                <div style="padding:8px;background:var(--panel2)">
+                  <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Read the DSR</p>
+                  <p style="margin:0 0 5px;font-size:9px;font-style:italic;color:var(--accent)">Task 2.1 · <span style="background:#fff3ec;color:#c2410c;border-radius:3px;padding:0 4px;font-style:normal">📎 DSR_March_2026.xlsx</span></p>
+                  <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">MTD vs target, YoY snapshot, the five worst days vs the daily target curve.</p>
+                </div>
+              </div>
+              <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+                <div style="background:#0a5268;padding:4px 8px;display:flex;align-items:center;gap:5px">
+                  <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">04</span>
+                  <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Edit with Copilot</span>
+                </div>
+                <div style="padding:8px;background:var(--panel2)">
+                  <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Reshape the grid</p>
+                  <p style="margin:0 0 5px;font-size:9px;font-style:italic;color:var(--accent)">Task 2.2</p>
+                  <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">Clean to <code>DSR_Clean</code>, add YoY Var % and MTD-vs-Target %, traffic-light formatting in-grid.</p>
+                </div>
+              </div>
+              <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+                <div style="background:#7c2d12;padding:4px 8px;display:flex;align-items:center;gap:5px">
+                  <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">05</span>
+                  <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Analyst Agent</span>
+                </div>
+                <div style="padding:8px;background:var(--panel2)">
+                  <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Forecast &amp; anomalies</p>
+                  <p style="margin:0 0 5px;font-size:9px;font-style:italic;color:var(--accent)">Task 2.3 · Premium</p>
+                  <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">Month-end forecast vs 5.4B target, z-score anomaly scan, channel cannibalisation check on Digimap.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCISE 3 -->
+          <div style="margin-bottom:14px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+              <span style="background:#1F2937;color:#fff;font-size:9px;font-weight:700;padding:3px 9px;border-radius:4px;letter-spacing:.5px">EXERCISE 3 · 20 min</span>
+              <span style="font-size:12px;font-weight:700;color:var(--ink)">Draft the board story</span>
+              <span class="badge basic" style="margin-left:0">Basic</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">
+              <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+                <div style="background:#1e3a5f;padding:4px 8px;display:flex;align-items:center;gap:5px">
+                  <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">06</span>
+                  <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Word Copilot</span>
+                </div>
+                <div style="padding:8px;background:var(--panel2)">
+                  <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Write the action plan</p>
+                  <p style="margin:0 0 5px;font-size:9px;font-style:italic;color:var(--accent)">Task 3.1 · <span style="background:#fff3ec;color:#c2410c;border-radius:3px;padding:0 4px;font-style:normal">📎 Store_Action_Plan_Draft.docx</span></p>
+                  <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">Expand the seed memo to a SMART action plan for store managers — Context, Findings, Required Actions, HQ support.</p>
+                </div>
+              </div>
+              <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+                <div style="background:#8B2635;padding:4px 8px;display:flex;align-items:center;gap:5px">
+                  <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">07</span>
+                  <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">PowerPoint Copilot</span>
+                </div>
+                <div style="padding:8px;background:var(--panel2)">
+                  <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Build the COO deck</p>
+                  <p style="margin:0 0 5px;font-size:9px;font-style:italic;color:var(--accent)">Task 3.2 · <span style="background:#fff3ec;color:#c2410c;border-radius:3px;padding:0 4px;font-style:normal">📎 Q1_COO_Briefing_Template.pptx</span></p>
+                  <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">5 slides from the memo: highlights, underperformers, actions, ask. Branded, speaker notes included.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCISE 4 -->
+          <div style="margin-bottom:14px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+              <span style="background:#1F2937;color:#fff;font-size:9px;font-weight:700;padding:3px 9px;border-radius:4px;letter-spacing:.5px">EXERCISE 4 · 22 min</span>
+              <span style="font-size:12px;font-weight:700;color:var(--ink)">Unlock Premium</span>
+              <span class="badge premium" style="margin-left:0">Premium</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">
+              <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+                <div style="background:#7c2d12;padding:4px 8px;display:flex;align-items:center;gap:5px">
+                  <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">08</span>
+                  <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Researcher</span>
+                </div>
+                <div style="padding:8px;background:var(--panel2)">
+                  <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Benchmark Jakarta</p>
+                  <p style="margin:0 0 5px;font-size:9px;font-style:italic;color:var(--accent)">Task 4.1</p>
+                  <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">How Nike, Adidas, Decathlon flagships drive Q1 footfall — events, run-clubs, drops, channel rules. Cited brief.</p>
+                </div>
+              </div>
+              <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+                <div style="background:#14532d;padding:4px 8px;display:flex;align-items:center;gap:5px">
+                  <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">09</span>
+                  <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Plan in Excel</span>
+                </div>
+                <div style="padding:8px;background:var(--panel2)">
+                  <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Auditable Q2 plan</p>
+                  <p style="margin:0 0 5px;font-size:9px;font-style:italic;color:var(--accent)">Task 4.2</p>
+                  <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">Forecast Q2 + simulate +5% conversion on bottom-quartile weekdays. Every step checkpointed and approvable.</p>
+                </div>
+              </div>
+              <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+                <div style="background:#4c1d95;padding:4px 8px;display:flex;align-items:center;gap:5px">
+                  <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">10</span>
+                  <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Image Creator</span>
+                </div>
+                <div style="padding:8px;background:var(--panel2)">
+                  <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Hero visual</p>
+                  <p style="margin:0 0 5px;font-size:9px;font-style:italic;color:var(--accent)">Task 4.3</p>
+                  <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">Banner for the COO deck — Jakarta flagship interior, premium athleisure feel. Drag straight into the slide.</p>
+                </div>
+              </div>
+              <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+                <div style="background:#0a5268;padding:4px 8px;display:flex;align-items:center;gap:5px">
+                  <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">11</span>
+                  <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Copilot Pages</span>
+                </div>
+                <div style="padding:8px;background:var(--panel2)">
+                  <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Share the story</p>
+                  <p style="margin:0 0 5px;font-size:9px;font-style:italic;color:var(--accent)">Task 4.4</p>
+                  <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">One Page consolidating numbers, anomalies, action plan, Researcher brief. Co-editable with the Ops leadership.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCISE 5 · THE FINALE -->
+          <div style="margin-bottom:14px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+              <span style="background:#1F2937;color:#fff;font-size:9px;font-weight:700;padding:3px 9px;border-radius:4px;letter-spacing:.5px">EXERCISE 5 · 8 min · FINALE</span>
+              <span style="font-size:12px;font-weight:700;color:var(--ink)">From data to a live dashboard</span>
+              <span class="badge premium" style="margin-left:0">Premium</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr;gap:8px">
+              <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+                <div style="background:linear-gradient(90deg,#E25522,#f59e0b);padding:4px 8px;display:flex;align-items:center;gap:5px">
+                  <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.7)">12</span>
+                  <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Cowork</span>
+                </div>
+                <div style="padding:8px;background:var(--panel2);display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                  <div>
+                    <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Build the dashboard live</p>
+                    <p style="margin:0 0 5px;font-size:9px;font-style:italic;color:var(--accent)">Task 5.1 · attendees paste &amp; run</p>
+                    <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">One Cowork prompt with the DSR attached. Cowork generates a self-contained HTML dashboard — KPI tiles, daily line chart, weekly bars, channel donut, top/bottom days, auto-Key Insights — ready to open and demo to the COO.</p>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:5px;justify-content:center">
+                    <div style="font-size:9px;color:var(--muted)">📎 Input:</div>
+                    <div style="font-size:9px;background:#fff3ec;color:#c2410c;border-radius:3px;padding:2px 6px">Contoso_Active_DSR_March_2026.xlsx</div>
+                    <div style="font-size:9px;color:var(--muted);margin-top:4px">📤 Output:</div>
+                    <div style="font-size:9px;background:#dcfce7;color:#166534;border-radius:3px;padding:2px 6px">Contoso_Active_PIM1_Dashboard.html</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- VALUE BAR -->
+          <div style="background:#fef9c3;border:1px solid #fbbf24;border-left:4px solid #f59e0b;border-radius:8px;padding:10px 14px;font-size:11.5px;color:#78350f">
+            <b>THE VALUE:</b> One Ops Manager. One workday. Research the market, analyse the DSR, draft the memo, build the COO deck, forecast Q2, ship a live dashboard — all without leaving Microsoft 365.
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- END THE STORY SECTION -->
 
     <div class="sechead"><div class="num">3</div><div><small>Download · open in your own tenant</small><h2 id="files">Demo files</h2></div></div>
     <div class="card">
