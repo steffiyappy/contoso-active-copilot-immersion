@@ -334,61 +334,21 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
 
     <div class="card" id="prompts-wxp">
       <h3>WXP Agents · Edit with Copilot <span class="badge basic">Basic</span></h3>
-      <p class="lead">In-grid Copilot does the work across Excel, Word, and PowerPoint. One consistent gesture — open the file, click Edit with Copilot, describe the change.</p>
+      <p class="lead">One consistent gesture across Excel, Word and PowerPoint — open the file, click <b>Edit with Copilot</b>, describe the change. Three files, three prompts.</p>
 
-      <h4>📊 Excel · DSR cleanup &amp; analysis</h4>
       <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">🧹 Clean to a usable sheet</div>
-        <p>Clean up the <b>Daily Sales CA09</b> sheet: promote row 8 to headers, drop empty columns, convert all sales columns to IDR-formatted numbers. Put the cleaned data on a new sheet called <code>DSR_Clean</code>. Don't touch the original.</p>
+        <div class="ptitle">📊 Excel · clean &amp; analyse the DSR</div>
+        <p>In <code>Contoso_Active_DSR_March_2026.xlsx</code>, clean up <b>Daily Sales CA09</b> into a new sheet <code>DSR_Clean</code> (promote row 8 to headers, drop empty columns, IDR-format numbers). Then add <b>YoY Var %</b> vs 2025, <b>MTD Var vs Target %</b>, and traffic-light formatting (red &lt;70%, amber 70–95%, green ≥100%). Finish with a one-paragraph MTD snapshot.</p>
       </div>
 
       <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">➗ Add YoY and MTD-vs-Target columns</div>
-        <p>On <code>DSR_Clean</code>, add a column <b>YoY Var %</b> comparing 2026 Daily Sales to the same date in 2025, a column <b>MTD Var vs Target %</b> using the daily target from the <b>Daily Target</b> sheet, and a running <b>MTD Sales 2026</b> column.</p>
+        <div class="ptitle">📝 Word · expand the Store Action Plan</div>
+        <p>In <code>Store_Action_Plan_Draft.docx</code>, expand the seed notes into a full action-plan memo. Tone: firm but supportive. Sections: Context, Findings, Required Actions (SMART, with owner + due date by 30 April), Support from HQ. Keep it under 1.5 pages.</p>
       </div>
 
       <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">🎨 Traffic-light formatting</div>
-        <p>Conditional-format <b>Daily Sales 2026</b> on <code>DSR_Clean</code>: any day below 70% of daily target = red, 70–95% = amber, ≥100% = green. Apply to the % Target column too.</p>
-      </div>
-
-      <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">📈 MTD snapshot</div>
-        <p>Summarise total March 2026 sales, MTD vs Target %, YoY vs March 2025, and call out the three biggest deviation days from target.</p>
-      </div>
-
-      <h4>📝 Word · the Store Action Plan</h4>
-      <p style="color:var(--muted);font-size:13px;margin:4px 0 8px">Open <code>Store_Action_Plan_Draft.docx</code> in Word and let Edit-with-Copilot expand it.</p>
-      <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">✍️ Expand the seed into a full memo</div>
-        <p>Using the meeting notes in this document and the March DSR summary, draft an action-plan memo to underperforming store managers. Tone: firm but supportive. Sections: Context, Findings, Required Actions (by 30 April with owner + due date), Support from HQ. Keep it under 1.5 pages.</p>
-      </div>
-
-      <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">🎯 SMART-ify the actions</div>
-        <p>Rewrite the "Required Actions" section so each action is SMART — specific, measurable, assigned, realistic, time-bound. Add a one-line success metric to each.</p>
-      </div>
-
-      <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">🌏 Bahasa Indonesia version</div>
-        <p>Produce a Bahasa Indonesia version of this memo for store managers, preserving the structure and tone.</p>
-      </div>
-
-      <h4>🎞️ PowerPoint · the COO briefing</h4>
-      <p style="color:var(--muted);font-size:13px;margin:4px 0 8px">Open <code>Q1_COO_Briefing_Template.pptx</code> and let Copilot fill it.</p>
-      <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">🎞️ Build the deck from the memo</div>
-        <p>Create a 5-slide COO briefing from <code>Store_Action_Plan_Draft.docx</code>. Slide 1 title, slide 2 Q1 highlights with key numbers, slide 3 underperformers &amp; anomaly days, slide 4 actions with owner/due-date, slide 5 the ask. Use the Contoso Active brand template already open.</p>
-      </div>
-
-      <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">📊 Add a chart slide</div>
-        <p>Insert a new slide before the actions slide with a bar chart of Daily Sales 2026 vs Daily Sales 2025 vs Daily Target for March, using the data in <code>Contoso_Active_DSR_March_2026.xlsx</code>. Title it "March 2026 vs 2025 vs Target".</p>
-      </div>
-
-      <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">🗣️ Speaker notes</div>
-        <p>Write speaker notes for each slide — 3 bullets max — in a confident, calm tone, as if Indra is presenting to the COO.</p>
+        <div class="ptitle">🎞️ PowerPoint · build the COO deck</div>
+        <p>In <code>Q1_COO_Briefing_Template.pptx</code>, build a 5-slide COO briefing from the Word memo: title · Q1 highlights · underperformers &amp; anomaly days · actions with owner/due-date · the ask. Add a chart slide (Sales 2026 vs 2025 vs Target) and write 3-bullet speaker notes per slide.</p>
       </div>
     </div>
 
@@ -414,39 +374,21 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
 
     <div class="card" id="prompts-analyst">
       <h3>Analyst · DSR <span class="badge premium">Premium</span></h3>
-      <p class="lead">Python on the workbook — forecasting, anomaly detection, executive summary. Reasoning agent doing the analyst's heavy lifting.</p>
+      <p class="lead">Python on the workbook — forecast, anomaly scan, board summary. The reasoning agent doing the analyst's heavy lifting.</p>
 
-      <h4>Forecasting</h4>
       <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">🔮 Month-end forecast</div>
-        <p>Analyst: using the daily 2025 sales pattern and the actual March 2026 days-to-date in <code>DSR_Clean</code>, forecast the remaining days of March 2026 and the month-end total. Show the forecast vs the 5.4B IDR target and the probability of hitting it. Include a chart with actuals, forecast band, and target line.</p>
+        <div class="ptitle">🔮 Month-end forecast vs 5.4B target</div>
+        <p>Analyst: using the daily 2025 sales pattern and actual March 2026 days-to-date in <code>DSR_Clean</code>, forecast the remaining days and the month-end total. Show forecast vs the 5.4B IDR target, the probability of hitting it, and a chart with actuals, forecast band and target line.</p>
       </div>
 
       <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">🎚️ What-if scenarios</div>
-        <p>Analyst: build a what-if — if the last week of March improves by +10%, +15%, +20% vs the 2025 weekday pattern, what does the final month-end land at, and what's the gap to the 5.4B target? Show as a small table and a bar chart.</p>
-      </div>
-
-      <h4>Anomaly detection</h4>
-      <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">🚨 Z-score anomaly scan</div>
-        <p>Analyst: flag anomalous days in March 2026 vs the 2025 daily pattern and vs the daily target curve. Use a z-score on daily variance %. Return a table with Date, Day, Daily Sales 2026, Expected, Z-score, and a likely-cause hypothesis (cross-reference the Reason column on the Daily Target sheet). Plot a chart highlighting the outliers.</p>
+        <div class="ptitle">🚨 Anomaly scan with hypotheses</div>
+        <p>Analyst: flag anomalous days in March 2026 vs the 2025 pattern using a z-score on daily variance %. Return a table — Date · Day · Daily Sales 2026 · Expected · Z-score · likely-cause hypothesis (cross-reference the Reason column on the Daily Target sheet). Plot a chart highlighting the outliers.</p>
       </div>
 
       <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">🛒 Channel cannibalisation check</div>
-        <p>Analyst: compare the Digimap channel daily trend (columns Sales / Acum Sales on the right of the sheet) to the in-store daily trend. Identify any days where Digimap moved opposite to store sales and explain the pattern. Suggest a channel pricing rule.</p>
-      </div>
-
-      <h4>Executive reporting</h4>
-      <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">📝 Board summary</div>
-        <p>Analyst: produce an executive board summary for the COO on CA PIM 1 March 2026 performance. Include: headline KPIs (MTD Sales, YoY%, vs Target%), top 3 takeaways, top 3 risks, top 3 recommended actions, and a one-paragraph narrative. Output in markdown ready to paste into the Word memo.</p>
-      </div>
-
-      <div class="prompt"><button class="copy-btn">Copy</button>
-        <div class="ptitle">🔗 Cross-source synthesis</div>
-        <p>Analyst: take the March DSR, the meeting notes in <code>Store_Action_Plan_Draft.docx</code>, and the email/Teams excerpts in <code>Sample_Emails_Teams.docx</code>. Reconcile the qualitative reasons with the quantitative anomaly days. Output a table: Date · Anomaly · Quant signal · Qual evidence · Confidence.</p>
+        <div class="ptitle">📝 Board-ready summary</div>
+        <p>Analyst: produce a COO board summary on CA PIM 1 March 2026. Include headline KPIs (MTD Sales, YoY%, vs Target%), top 3 takeaways, top 3 risks, top 3 recommended actions, and a one-paragraph narrative. Output in markdown ready to paste into the Word memo.</p>
       </div>
     </div>
 
